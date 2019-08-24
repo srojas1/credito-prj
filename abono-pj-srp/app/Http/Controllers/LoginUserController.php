@@ -5,7 +5,9 @@ use App\Intendente;
 use App\Usuario;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use GuzzleHttp\Client;
 
 class LoginUserController extends Controller
 {
@@ -29,6 +31,38 @@ class LoginUserController extends Controller
     }
 
     /**
+     * @param $telefono
+     */
+    private function sendSMS($telefono) {
+
+        $tokenSMS =  rand(10000,99999);
+
+        $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => 'http://api2.gamacom.com.pe',
+            // You can set any number of default request options.
+            'timeout'  => 2.0,
+        ]);
+
+        $apikey    = "9585E2532034";
+        $apicard   = "1293309859";
+        $smstext   = "Su clave de acceso es ". $tokenSMS;
+        $smstype   = "0";
+
+        $response = $client->request('POST', 'http://api2.gamacom.com.pe/smssend', [
+            'form_params' => [
+                'apicard'  => urlencode($apicard),
+                'apikey'   => urlencode($apikey),
+                'smsnumber'=> urlencode($telefono),
+                'smstext'  => urlencode($smstext),
+                'smstype'  => urlencode($smstype),
+            ]
+        ]);
+
+        return $tokenSMS;
+    }
+
+    /**
      * Validar DNI: intendente/usuario
      */
     public function validateDNI(Request $request) {
@@ -41,12 +75,15 @@ class LoginUserController extends Controller
 
         if(!empty($usuario)) {
             $telefonoIntendente = $usuario['telefono'];
-           //Enviar SMS
-            //enviarSMS($telefonoIntendente);
+
+            $claveUsuario = $this->sendSMS($telefonoIntendente);
+
+            Usuario::where('dni', $dni)->update(array('password' => Hash::make($claveUsuario)));
+
             $return['data']  = array(
                 'telefono' =>$telefonoIntendente
             );
-            return route('login', ['dni' => '47156198']);
+            return route('login', ['dni' => $dni]);
         } else {
             return route('registro_usuario');
         }

@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript" src="{{ asset('js/registro_abono.js')}}"></script>
 </head>
 <body>
 <div id="app">
@@ -45,7 +46,7 @@
                     <div class="panel-heading">Registrar Abono</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        <form id="registro_abono_form" class="form-horizontal" method="post" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label for="dni_usuario" class="col-md-4 control-label">DNI Usuario</label>
@@ -60,6 +61,22 @@
 
                                 <div class="col-md-6">
                                     <input id="dni_intendente" type="text" class="form-control" name="dni_intendente" required autofocus>
+                                    <input id="id_intendente" type="hidden" class="form-control" name="id_intendente">
+                                </div>
+                            </div>
+
+                            <div class="intendente_data form-group">
+                                <div class="form-group">
+                                    <label for="nombres_intendente" class="col-md-4 control-label" style="margin-left: 24%">Nombres Intendente:</label>
+                                    <input id="nombres_intendente" type="text" name="nombres_intendente" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellidos_intendente" class="col-md-4 control-label" style="margin-left: 24%">Apellidos Intendente:</label>
+                                    <input id="apellidos_intendente" type="text" name="apellidos_intendente" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono_intendente" class="col-md-4 control-label" style="margin-left: 24%">Telefono Intendente:</label>
+                                    <input id="telefono_intendente" type="text" name="telefono_intendente" disabled>
                                 </div>
                             </div>
 
@@ -74,13 +91,13 @@
                             <div class="form-group">
                                 <label for="file" class="col-md-4 control-label">Archivo adjunto</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="file" id="file">
+                                    <input type="file" name="file_abono" id="file_abono">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="button" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary registro_abono">
                                         Registrar Abono
                                     </button>
                                 </div>

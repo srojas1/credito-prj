@@ -13,9 +13,8 @@ $(document).ready(function(){
         }).done(function(data){
             if(data['estado'] === true) {
                 alert("Usuario registrado exitosamente")
-                window.location.href = "login";
+                window.location.href = "ingreso_usuario";
             } else {
-                console.log(data['error_msg']);
                 alert("Ocurrió un problema con el registro");
             }
         });
