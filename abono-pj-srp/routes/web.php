@@ -11,10 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
+
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
-Auth::routes();
+Route::post('login','Auth\LoginController@login')->name('login');
+Route::post('logout','Auth\LoginController@logout')->name('logout');
+Route::post('validateDNI','LoginUserController@validateDNI');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', 'Dashboard@index')->name('dashboard');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ingreso_usuario', 'LoginUserController@index')->name('ingreso_usuario');
+Route::get('/registro_usuario', 'RegistroUsuarioController@index')->name('registro_usuario');
+Route::get('/registro_abono', 'RegistroAbonoController@index')->name('registro_abono');
+
+//Ajax routing
+Route::post('validateDNI', 'LoginUserController@validateDNI');
+Route::post('validatePassword', 'LoginPasswordController@validatePassword');
+Route::post('registrarUsuario', 'RegistroUsuarioController@registrarUsuario');
