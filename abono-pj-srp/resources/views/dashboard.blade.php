@@ -23,10 +23,30 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Dashboard</div>
-                    <div class="panel-heading"><a href="{{ route('registro_abono') }}">Registro de Abono</a></div>
+                    <div class="panel-heading"><a href="{{ route('registro_abono') }}">(+) Registro de Abono</a></div>
                 </div>
                 <div class="panel-body">
-                   <strong> DNI: {{ auth()->user()->dni }} </strong>
+                   <strong> Lista de abonos de usuario: {{ auth()->user()->dni }}  </strong>
+                   <table class="table table-striped table-hover tabla_abono">
+                        <thead>
+                        <tr>
+                            <th>DNI intendente</th>
+                            <th>Nombre intendente</th>
+                            <th>Importe</th>
+                            <th>URL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($abonos as $abono)
+                            <tr>
+                                <td>{{$abono->dni_abonado}}</td>
+                                <td>{{$abono->GetIntendenteById->nombres}} {{$abono->GetIntendenteById->apellidos}}</td>
+                                <td>{{$abono->importe}}</td>
+                                <td><a href="{{$abono->url}}" target="_blank">{{$abono->url}}</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -41,22 +41,22 @@
 
                                 <div class="col-md-6">
                                     <input id="dni_intendente" type="text" class="form-control" name="dni_intendente" required autofocus>
-                                    <input id="id_intendente" type="hidden" class="form-control" name="id_intendente">
+                                    <input id="id_intendente" type="hidden" class="form-control intendente_val" name="id_intendente">
                                 </div>
                             </div>
 
                             <div class="intendente_data form-group">
                                 <div class="form-group">
                                     <label for="nombres_intendente" class="col-md-4 control-label" style="margin-left: 24%">Nombres Intendente:</label>
-                                    <input id="nombres_intendente" type="text" name="nombres_intendente" disabled>
+                                    <input id="nombres_intendente" type="text" name="nombres_intendente" class="intendente_val" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="apellidos_intendente" class="col-md-4 control-label" style="margin-left: 24%">Apellidos Intendente:</label>
-                                    <input id="apellidos_intendente" type="text" name="apellidos_intendente" disabled>
+                                    <input id="apellidos_intendente" type="text" name="apellidos_intendente" class="intendente_val" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="telefono_intendente" class="col-md-4 control-label" style="margin-left: 24%">Telefono Intendente:</label>
-                                    <input id="telefono_intendente" type="text" name="telefono_intendente" disabled>
+                                    <input id="telefono_intendente" type="text" name="telefono_intendente" class="intendente_val" disabled>
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="button" class="btn btn-primary registro_abono">
+                                    <button type="button" class="btn btn-primary registro_abono" disabled="disabled">
                                         Registrar Abono
                                     </button>
                                 </div>

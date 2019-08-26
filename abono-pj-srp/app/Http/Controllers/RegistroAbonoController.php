@@ -62,15 +62,13 @@ class RegistroAbonoController extends Controller
     function getFullURLFile($endpoint) {
         $url = \Request::url();
         $replacedURL = str_replace($endpoint, '', $url) ;
-        return $replacedURL.'/uploads/';
+        return $replacedURL.'upload/';
     }
 
     public function registrarAbono(Request $request) {
         $idIntendente  = $request->input('id_intendente');
         $dniIntendente = $request->input('dni_intendente');
         $importe       = $request->input('importe');
-
-        $matchData = ['dni' => $dniIntendente];
 
         $abono = new Abono();
 
@@ -86,7 +84,7 @@ class RegistroAbonoController extends Controller
         $file = $request->file('file_abono');
         if($file->isValid()){
             $file->move($destinationPath, $file->getClientOriginalName());
-            $abono->url = $this->getFullURLFile('registro_abono').$file->getClientOriginalName();
+            $abono->url = $this->getFullURLFile('registrarAbono').$file->getClientOriginalName();
         }
 
         try {

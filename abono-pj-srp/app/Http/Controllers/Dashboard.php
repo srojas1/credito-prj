@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Abono;
 use App\Intendente;
 use App\Usuario;
 use Illuminate\Routing\Controller as BaseController;
@@ -23,6 +24,7 @@ class Dashboard extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('dashboard');
+        $abonos = Abono::all()->where('id_usuario', Auth::id());
+        return view('dashboard', ["abonos"=>$abonos]);
     }
 }
