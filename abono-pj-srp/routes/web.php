@@ -32,7 +32,6 @@ Route::get('/registro_abono', 'RegistroAbonoController@index')->name('registro_a
 
 //Ajax routing
 Route::post('validateDNI', 'LoginUserController@validateDNI');
-Route::post('validatePassword', 'LoginPasswordController@validatePassword');
 Route::post('registrarUsuario', 'RegistroUsuarioController@registrarUsuario');
 Route::post('obtenerIntendente', 'RegistroAbonoController@obtenerIntendente');
 Route::post('registrarAbono', 'RegistroAbonoController@registrarAbono');

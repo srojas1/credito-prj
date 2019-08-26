@@ -18,9 +18,7 @@ class LoginController extends Controller {
             ]
         );
 
-        $inTime = true;
-
-        if(Auth::attempt($credentials) && $inTime) {
+        if(Auth::attempt($credentials)) {
             return redirect('dashboard');
         }
 
