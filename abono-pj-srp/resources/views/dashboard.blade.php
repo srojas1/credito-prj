@@ -9,31 +9,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/abono.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Abonos
-                </a>
-            </div>
-        </div>
-    </nav>
+    @include('layouts.logged_user')
 
     <div class="container">
         <div class="row">
@@ -44,12 +27,6 @@
                 </div>
                 <div class="panel-body">
                    <strong> DNI: {{ auth()->user()->dni }} </strong>
-                </div>
-                <div class="panel-footer">
-                    <form method="POST" action="{{route('logout')}}">
-                        {{ csrf_field() }}
-                        <button class="btn btn-danger btn-xs btn-block">Cerrar sesión</button>
-                    </form>
                 </div>
             </div>
         </div>
