@@ -83,7 +83,7 @@ class LoginUserController extends Controller
             $return['data']  = array(
                 'telefono' =>$telefonoIntendente
             );
-            return route('login', ['dni' => $dni]);
+            return route('login', ['dni' => $dni,'sms_success'=>1]);
         } else {
             return route('registro_usuario');
         }

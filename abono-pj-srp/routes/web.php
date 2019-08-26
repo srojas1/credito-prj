@@ -23,12 +23,12 @@ Route::post('validateDNI','LoginUserController@validateDNI');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'Dashboard@index')->name('dashboard');
+    Route::get('registro_abono', 'RegistroAbonoController@index')->name('registro_abono');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ingreso_usuario', 'LoginUserController@index')->name('ingreso_usuario');
 Route::get('/registro_usuario', 'RegistroUsuarioController@index')->name('registro_usuario');
-Route::get('/registro_abono', 'RegistroAbonoController@index')->name('registro_abono');
 
 //Ajax routing
 Route::post('validateDNI', 'LoginUserController@validateDNI');

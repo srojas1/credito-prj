@@ -5,7 +5,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div>Se envió un SMS a su teléfono, ingresarlo en el campo Password</div>
+                    @if(app('request')->input('sms_success'))
+                        <div>Se envió un SMS a su teléfono, ingresarlo en el campo Password</div>
+                    @endif
                     <div class="panel-heading">Ingreso</div>
                     <div class="panel-body">
                         <form class="form-horizontal"  method="POST" action="{{ route('login') }}">

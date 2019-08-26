@@ -22,7 +22,7 @@ class LoginController extends Controller {
             return redirect('dashboard');
         }
 
-        return back()->withErrors(['dni' => 'Estas credenciales no coinciden'])->withInput(request(['dni']));
+        return back()->withErrors(['dni' => 'Estas credenciales no coinciden','password' => 'Estas credenciales no coinciden'])->withInput(request(['dni','password']));
     }
 
     public function logout() {
