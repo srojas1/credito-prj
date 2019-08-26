@@ -41,9 +41,9 @@ class RegistroAbonoController extends Controller
         $intendente   = Intendente::where($matchData)->select($columnas)->first();
 
         if(!empty($intendente)) {
-            $nombresIntendente = $intendente['telefono'];
-            $apellidosIntendente = $intendente['nombres'];
-            $telefonoIntendente = $intendente['apellidos'];
+            $nombresIntendente = $intendente['nombres'];
+            $apellidosIntendente = $intendente['apellidos'];
+            $telefonoIntendente = $intendente['telefono'];
             $idIntendente = $intendente['id'];
             $return['data']  = array(
                 'nombres_intendente' =>$nombresIntendente,
