@@ -14,6 +14,7 @@
                                 <input id="dni" class="form-control" name="dni" required autofocus>
                                 {!! $errors->first('dni') !!}
                             </div>
+                            <div id="loading"></div>
                         </div>
 
                         <div class="form-group">

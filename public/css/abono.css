@@ -10,3 +10,16 @@
     font-size: inherit;
 }
 .tabla_abono { margin-top: 5%; }
+
+#loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+    background: rgba( 255, 255, 255, .8 )
+    url('http://i.stack.imgur.com/FhHRx.gif')
+    center center
+    no-repeat;
+}
